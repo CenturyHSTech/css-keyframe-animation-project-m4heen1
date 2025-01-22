@@ -1,0 +1,40 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test Requirements
+      id: test-requirements
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Requirements
+        setup-command: pip install webcode-tk file-clerk pytest
+        command: pytest tests/test_requirements.py
+        timeout: 10
+        max-score: 3
+    - name: Test Animations
+      id: test-animations
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Animations
+        setup-command: pip install webcode-tk file-clerk pytest
+        command: pytest tests/test_animations.py
+        timeout: 10
+        max-score: 3
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-REQUIREMENTS_RESULTS: "${{steps.test-requirements.outputs.result}}"
+        TEST-ANIMATIONS_RESULTS: "${{steps.test-animations.outputs.result}}"
+      with:
+        runners: test-requirements,test-animations
