@@ -1,0 +1,222 @@
+@keyframes titleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+        color: white;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+        color: cyan;
+    }
+    100% {
+        transform: scale(1);
+        color: lime;
+    }
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    animation: titleAnimation 3s ease-in-out infinite alternate;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.animation-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+/* First UFO (horizontal straight flight) */
+.ufo {
+    position: absolute;
+    width: 100px;
+    top: 50px;
+    left: -120px;
+    filter: drop-shadow(0 0 10px cyan);
+    animation: fly-across 6s linear infinite, ufo-glow 1s ease-in-out infinite alternate;
+}
+
+/* Second UFO (wavy horizontal flight) */
+.second-ufo {
+    position: absolute;
+    width: 80px;
+    top: 180px;
+    left: -120px;
+    filter: drop-shadow(0 0 10px red);
+    animation: fly-wave 8s ease-in-out infinite, ufo-glow-2 1s ease-in-out infinite alternate;
+}
+
+/* Third UFO (diagonal movement with slower spinning) */
+.third-ufo {
+    position: absolute;
+    width: 90px;
+    left: -100px;
+    top: 300px;
+    filter: drop-shadow(0 0 10px purple);
+    animation: fly-diagonal 6s ease-in-out infinite, ufo-spin 1s linear infinite, ufo-glow-3 1s ease-in-out infinite alternate;
+}
+
+/* Fourth UFO (vertical downward movement) */
+.fourth-ufo {
+    position: absolute;
+    width: 90px;
+    left: 80%;
+    top: -100px;
+    filter: drop-shadow(0 0 10px yellow);
+    animation: fly-down 6s ease-in-out infinite, ufo-glow-4 1s ease-in-out infinite alternate;
+}
+
+/* First UFO Animation */
+@keyframes fly-across {
+    0% {
+        left: -120px;
+        opacity: 0.5;
+    }
+    25% {
+        top: 60px;
+        opacity: 1;
+    }
+    50% {
+        left: 50%;
+        top: 80px;
+    }
+    75% {
+        left: 75%;
+        top: 70px;
+    }
+    100% {
+        left: 100%;
+        opacity: 0.8;
+    }
+}
+
+/* Second UFO Animation - Wavy Flight */
+@keyframes fly-wave {
+    0% {
+        left: -120px;
+        top: 180px;
+    }
+    20% {
+        left: 20%;
+        top: 210px;
+    }
+    40% {
+        left: 40%;
+        top: 160px;
+    }
+    60% {
+        left: 60%;
+        top: 220px;
+    }
+    80% {
+        left: 80%;
+        top: 190px;
+    }
+    100% {
+        left: 100%;
+        top: 200px;
+    }
+}
+
+/* Third UFO Animation - Diagonal Flight */
+@keyframes fly-diagonal {
+    0% {
+        left: -100px;
+        top: 300px;
+    }
+    25% {
+        left: 25%;
+        top: 250px;
+    }
+    50% {
+        left: 50%;
+        top: 200px;
+    }
+    75% {
+        left: 75%;
+        top: 150px;
+    }
+    100% {
+        left: 100%;
+        top: 100px;
+    }
+}
+
+/* Third UFO Spinning (every 1s) */
+@keyframes ufo-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Fourth UFO Animation - Vertical Downward Flight */
+@keyframes fly-down {
+    0% {
+        top: -100px;
+    }
+    25% {
+        top: 50px;
+    }
+    50% {
+        top: 150px;
+    }
+    75% {
+        top: 250px;
+    }
+    100% {
+        top: 400px;
+    }
+}
+
+/* First UFO Glow */
+@keyframes ufo-glow {
+    0% {
+        filter: drop-shadow(0 0 5px cyan);
+    }
+    100% {
+        filter: drop-shadow(0 0 15px lime);
+    }
+}
+
+/* Second UFO Glow */
+@keyframes ufo-glow-2 {
+    0% {
+        filter: drop-shadow(0 0 5px red);
+    }
+    100% {
+        filter: drop-shadow(0 0 15px yellow);
+    }
+}
+
+/* Third UFO Glow */
+@keyframes ufo-glow-3 {
+    0% {
+        filter: drop-shadow(0 0 5px purple);
+    }
+    100% {
+        filter: drop-shadow(0 0 15px magenta);
+    }
+}
+
+/* Fourth UFO Glow */
+@keyframes ufo-glow-4 {
+    0% {
+        filter: drop-shadow(0 0 5px yellow);
+    }
+    100% {
+        filter: drop-shadow(0 0 15px orange);
+    }
+}
